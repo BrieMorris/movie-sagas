@@ -79,3 +79,22 @@ VALUES
 (12,6), (12,3),           -- Social Net
 (13,6), (13,10), (13,1),  -- Titanic
 (14,1), (14,2), (14,4);   -- Toy Story
+
+
+--option 1
+SELECT movies.*, genres.name as genre FROM movies
+JOIN movies_genres ON movies.id = movies_genres.movie_id
+JOIN genres ON movies_genres.genre_id = genres.id;
+
+--option 2 
+SELECT 
+  "movies"."id" AS "movie_id",
+  "movies"."title" AS "movie_title",
+  "genres"."id" AS "genre_id",
+  "genres"."name" AS "genre_name"
+  FROM 
+    "movies"
+  JOIN 
+    "movies_genres" ON "movies"."id" = "movies_genres"."movie_id"
+  JOIN 
+    "genres" ON "movies_genres"."genre_id" = "genres"."id";
